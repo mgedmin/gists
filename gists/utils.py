@@ -237,8 +237,7 @@ class GistsConfigurer(object):
 
         self.config = ConfigParser.ConfigParser()
         self.config_file_path = os.path.expanduser('~/.gistsrc')
-        if os.path.exists(self.config_file_path):
-            self.config.read(self.config_file_path)
+        self.config.read(self.config_file_path)
 
     def getConfigUser(self):
         """ Returns the user from the configuration file.
