@@ -283,6 +283,9 @@ class GistsConfigurer(object):
 
     def _writeConfig(self):
         with open(self.config_file_path, 'w') as f:
+            if hasattr(os, 'fchmod'):
+                # There's no os.fchmod on Windows.
+                os.fchmod(f.fileno(), 0o600)
             self.config.write(f)
 
 
