@@ -258,8 +258,7 @@ class GistsConfigurer(object):
         if not self.config.has_section('credentials'):
             self.config.add_section('credentials')
         self.config.set('credentials', 'user', user)
-        with open(self.config_file_path, 'w') as f:
-            self.config.write(f)
+        self._writeConfig()
 
     def getConfigToken(self):
         """ Returns the auth token from the configuration file.
@@ -280,6 +279,9 @@ class GistsConfigurer(object):
         if not self.config.has_section('credentials'):
             self.config.add_section('credentials')
         self.config.set('credentials', 'token', token)
+        self._writeConfig()
+
+    def _writeConfig(self):
         with open(self.config_file_path, 'w') as f:
             self.config.write(f)
 
