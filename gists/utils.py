@@ -232,17 +232,13 @@ class GistsConfigurer(object):
         """ Initializes the 'ConfigParser' instance.
 
         If it does not found the '~/.gistsrc' file from the current user,
-        it creates it empty.
+        it creates it when you change something.
         """
 
         self.config = ConfigParser.ConfigParser()
         self.config_file_path = os.path.expanduser('~/.gistsrc')
         if os.path.exists(self.config_file_path):
             self.config.read(self.config_file_path)
-        else:
-            with open(self.config_file_path, 'w'):
-                # just create the file
-                pass
 
     def getConfigUser(self):
         """ Returns the user from the configuration file.
